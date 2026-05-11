@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТЗ на TMS для Арвато Рус — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .case-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumb { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2.5rem; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+    .case-title { font-family: var(--serif); font-size: clamp(2.5rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.0; letter-spacing: -0.025em; max-width: 18ch; margin-bottom: 3.5rem; }
+    .case-meta { display: grid; grid-template-columns: repeat(4, auto); gap: 0; border: 1px solid var(--rule); width: fit-content; }
+    .meta-item { padding: 1.25rem 2rem; border-right: 1px solid var(--rule); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.35rem; }
+    .meta-value { font-size: 0.85rem; color: var(--ink); font-weight: 400; }
+
+    .results-banner { display: flex; border-bottom: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+    .result-cell { flex: 1; padding: 3rem 6rem; border-right: 1px solid var(--rule); text-align: center; }
+    .result-cell:last-child { border-right: none; }
+    .result-big { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
+    .result-desc { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.5rem; }
+
+    .case-body { max-width: 860px; margin: 0 auto; padding: 5rem 6rem 7rem; }
+    .case-section { margin-bottom: 4rem; padding-top: 4rem; border-top: 1px solid var(--rule); }
+    .case-section:first-child { border-top: none; padding-top: 0; }
+    .section-heading { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 0.75rem; }
+    .section-emoji { font-size: 1.5rem; line-height: 1; }
+    .case-text { font-size: 0.95rem; line-height: 1.9; color: var(--ink-light); margin-bottom: 1.25rem; }
+    .case-list { list-style: none; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .case-list li { display: flex; gap: 1.25rem; font-size: 0.92rem; line-height: 1.75; color: var(--ink-light); }
+    .case-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 0.1em; }
+    .case-subsection { margin-top: 2.5rem; }
+    .subsection-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 1rem; color: var(--ink); }
+    .num-list { list-style: none; counter-reset: item; display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0 1.5rem; }
+    .num-list li { display: flex; gap: 1.25rem; font-size: 0.92rem; line-height: 1.75; color: var(--ink-light); counter-increment: item; }
+    .num-list li::before { content: counter(item) "."; color: var(--accent); font-family: var(--serif); font-size: 1rem; flex-shrink: 0; width: 1.25rem; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .skill-chip { font-size: 0.75rem; padding: 0.35rem 0.9rem; border: 1px solid var(--rule); color: var(--ink-light); letter-spacing: 0.02em; }
+    .case-quote { margin: 2.5rem 0; padding: 2rem 2.5rem; border-left: 3px solid var(--accent); background: rgba(196,75,43,0.03); }
+    .case-quote p { font-family: var(--serif); font-size: 1.2rem; font-style: italic; line-height: 1.6; color: var(--ink); }
+    .case-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .case-link { display: inline-flex; align-items: center; font-size: 0.75rem; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); padding: 0.65rem 1.4rem; border: 1px solid var(--rule); transition: all 0.2s; }
+    .case-link:hover { border-color: var(--accent); color: var(--accent); }
+    .case-link::after { content: ' →'; }
+
+    .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 1.5rem; }
+    .insight-item { background: var(--cream); padding: 1.5rem 1.75rem; }
+    .insight-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .insight-text { font-size: 0.875rem; line-height: 1.7; color: var(--ink-light); }
+
+    @media (max-width: 900px) {
+      .case-hero { padding: 9rem 2rem 4rem; }
+      .case-meta { grid-template-columns: 1fr 1fr; }
+      .meta-item:nth-child(2) { border-right: none; }
+      .meta-item:nth-child(3) { border-top: 1px solid var(--rule); }
+      .results-banner { flex-direction: column; }
+      .result-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 2rem; }
+      .result-cell:last-child { border-bottom: none; }
+      .case-body { padding: 3rem 2rem 5rem; }
+      .insight-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="case-hero reveal">
+    <p class="breadcrumb"><a href="index.html">Главная</a><span>/</span><a href="index.html#cases">Ключевые кейсы</a><span>/</span>TMS Арвато Рус</p>
+    <h1 class="case-title">Разработка ТЗ на систему управления транспортом (TMS) для «Арвато Рус»</h1>
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Роль</p>
+        <p class="meta-value">Системный аналитик</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Компания / Заказчик</p>
+        <p class="meta-value">ООО «Текмэн» / Арвато Рус</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Период</p>
+        <p class="meta-value">2017–2018</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Инструменты</p>
+        <p class="meta-value">Axure RP · Microsoft Word · Google Docs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results banner -->
+  <div class="results-banner reveal">
+    <div class="result-cell">
+      <div class="result-big">130+</div>
+      <p class="result-desc">Страниц ТЗ</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-big">10</div>
+      <p class="result-desc">Служб доставки</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-big">7</div>
+      <p class="result-desc">Ролей пользователей</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-big">9</div>
+      <p class="result-desc">Аналитических отчётов</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="case-body">
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🔍</span> Контекст</h2>
+      <p class="case-text">«Арвато Рус» — независимый сервис-провайдер в сфере электронной коммерции и управления цепочками поставок. Компания ежемесячно обрабатывает до 1 миллиона отправлений, работая с такими службами доставки, как DPD, СДЭК, Boxberry, Почта России, PickPoint и другими.</p>
+      <p class="case-text">Я работала в компании «Текмэн» на позиции системного аналитика. Мне была поставлена задача разработать техническое задание на проектирование TMS (Transportation Management System) — системы управления транспортом — с нуля.</p>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">❗</span> Проблема</h2>
+      <p class="case-text">До создания TMS процессы в компании были ручными и разрозненными:</p>
+      <ul class="case-list">
+        <li>Данные об отправлениях хранились в двух несвязанных ERP-системах (SAP и FullHouse), которые не имели общей базы данных и не были интегрированы между собой.</li>
+        <li>Отчётность по статусам доставки и тарифам служб доставки вносилась вручную сотрудниками.</li>
+        <li>Каждая служба доставки использовала собственную OMS с нестандартизированными данными и статусами — это делало сравнение и аналитику невозможными.</li>
+        <li>Сводная отчётность по разным службам доставки формировалась вручную путём сведения данных из SAP и FullHouse.</li>
+      </ul>
+      <p class="case-text">Итог: высокая трудоёмкость, ошибки, запаздывающая аналитика и отсутствие единого инструмента для принятия решений по работе со службами доставки.</p>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🎯</span> Задача</h2>
+      <p class="case-text">Разработать техническое задание для системы TMS, которая:</p>
+      <ol class="num-list">
+        <li>Автоматизирует взаимодействие между всеми участниками цепочки доставки: WMS, OMS служб доставки, заказчиками и клиентами.</li>
+        <li>Унифицирует статусы доставки от разных служб в единый формат.</li>
+        <li>Обеспечит аналитику и отчётность в режиме реального времени.</li>
+        <li>Предоставит разграниченный доступ для разных ролей пользователей: сотрудников «Арвато Рус», внешних заказчиков и гостей.</li>
+      </ol>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">⚙️</span> Что я сделала</h2>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">1. Интервьюирование заказчика и погружение в предметную область</h3>
+        <p class="case-text">Провела серию интервью с представителями разных подразделений «Арвато Рус»: отдела по работе со службами доставки, бухгалтерии, менеджеров по работе с заказчиками, IT-директора. Изучила текущие процессы взаимодействия между SAP/FullHouse, OMS служб доставки и внутренними командами.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">2. Описание процессов и требований</h3>
+        <p class="case-text">Описала полный жизненный цикл отправления: от импорта заказа из интернет-магазина в WMS — через формирование и передачу отправления в службу доставки — до получения статусов, обработки возвратов и формирования итоговой отчётности для заказчиков.</p>
+        <p class="case-text">Разработала глоссарий системы (TMS, WMS, OMS, ERP, SAP, FullHouse, статусы, роли) для единого понимания терминов командой разработки и заказчиком.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">3. Проектирование архитектуры и ролевой модели</h3>
+        <p class="case-text">Спроектировала архитектуру системы из трёх ключевых компонентов:</p>
+        <ul class="case-list">
+          <li><strong>АРМ Администратора</strong> — управление пользователями, справочниками, отчётами.</li>
+          <li><strong>Функциональные механизмы</strong> — обработка тарифов, аналитика, трекинг отправлений.</li>
+          <li><strong>База данных</strong> — централизованное хранилище с 9 ключевыми таблицами (Users, Delivery_services, Delivery_Rates, Parcel и др.).</li>
+        </ul>
+        <p class="case-text">Описала ролевую модель с 7 ролями пользователей (Администратор, Сотрудник отдела доставки, Менеджер по работе с заказчиками, Сотрудник сервисной службы, Сотрудник бухгалтерии, Заказчик, Гость) и разграничением прав доступа для каждой.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">4. Описание API-интеграций</h3>
+        <p class="case-text">Описала структуру данных, передаваемых по API между WMS и TMS (50+ полей заказа) и между TMS и OMS служб доставки. Разработала перечень запросов к API 6 служб доставки: Boxberry, PickPoint, DPD, СДЭК, СПСР, МаксиПост.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">5. Унификация статусов служб доставки</h3>
+        <p class="case-text">Разработала механизм перевода разнородных статусов 10 служб доставки в единые унифицированные статусы TMS «Арвато Рус». Учла краевые случаи: добавление новых статусов, уведомления администратора, дополнительные расшифровки по статусу «Не доставлено» для каждой службы отдельно.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">6. Проектирование аналитической подсистемы</h3>
+        <p class="case-text">Спроектировала 9 аналитических отчётов с описанием фильтров, логики расчётов и структуры данных:</p>
+        <ul class="case-list">
+          <li>Отчёт по срокам доставки</li>
+          <li>Детализация выполнения контрольных сроков</li>
+          <li>Отчёт по возвратам</li>
+          <li>Отчёт о тарифах служб доставки</li>
+          <li>Отчёт по выкупленным отправлениям</li>
+          <li>Отчёт по срокам перечисления денежных средств</li>
+          <li>Сводный отчёт по условиям служб доставки</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">7. Создание интерактивных прототипов и описание UI</h3>
+        <p class="case-text">Совместно с командой создала интерактивные макеты в Axure для всех экранных форм системы. Написала подробное описание каждого элемента интерфейса: полей ввода, таблиц, фильтров, кнопок, сообщений об ошибках и всплывающих окон.</p>
+        <p class="case-text">Описала все сообщения об ошибках системы с HTTP-кодами и текстами для пользователей.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">8. Требования к документации и приёмо-сдаточным испытаниям</h3>
+        <p class="case-text">Описала структуру пользовательской документации (руководство пользователя, руководство администратора, описание API) и программу приёмо-сдаточных испытаний.</p>
+      </div>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">📊</span> Результат</h2>
+      <ul class="case-list">
+        <li>Разработано полное техническое задание объёмом <strong>более 130 страниц</strong>, охватывающее архитектуру, ролевую модель, API-интеграции, аналитическую подсистему и пользовательский интерфейс.</li>
+        <li>ТЗ стало основой для разработки системы, заменившей ручные процессы обработки данных от 10 служб доставки.</li>
+        <li>Унифицированная статусная модель позволила сравнивать и анализировать данные по всем перевозчикам в единой системе.</li>
+        <li>Разграниченная ролевая модель обеспечила доступ к данным как внутренним сотрудникам (6 ролей), так и внешним заказчикам.</li>
+      </ul>
+      <div class="case-links">
+        <a href="https://drive.google.com/file/d/1DDqpYZ6AiiNFkfgH9aY27HCwBsGfHFn_/view?usp=sharing" class="case-link" target="_blank" rel="noopener">Пример отрывка ТЗ</a>
+        <a href="https://drive.google.com/file/d/1iYYtlB5t_d6zTvb_PQUdvXVv11IuhkyD/view?usp=sharing" class="case-link" target="_blank" rel="noopener">Схема передачи данных</a>
+      </div>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">💡</span> Что показывает этот кейс</h2>
+      <div class="insight-grid">
+        <div class="insight-item">
+          <p class="insight-label">Сбор требований</p>
+          <p class="insight-text">Интервьюирование заказчика, выявление болей, формализация процессов</p>
+        </div>
+        <div class="insight-item">
+          <p class="insight-label">Системный анализ</p>
+          <p class="insight-text">Проектирование архитектуры, ролевой модели, структуры БД, API-интеграций</p>
+        </div>
+        <div class="insight-item">
+          <p class="insight-label">Работа с данными</p>
+          <p class="insight-text">Описание 50+ полей данных, структуры таблиц БД, форматов обмена данными (JSON)</p>
+        </div>
+        <div class="insight-item">
+          <p class="insight-label">Документирование</p>
+          <p class="insight-text">Написание ТЗ по ГОСТ, описание требований к безопасности, отказоустойчивости, производительности</p>
+        </div>
+        <div class="insight-item">
+          <p class="insight-label">Понимание бизнес-процессов</p>
+          <p class="insight-text">Полный жизненный цикл заказа от оформления до доставки, возврата и аналитики</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🛠️</span> Навыки, использованные в проекте</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">Системный анализ</span>
+        <span class="skill-chip">Сбор требований</span>
+        <span class="skill-chip">Интервьюирование заказчика</span>
+        <span class="skill-chip">Написание ТЗ</span>
+        <span class="skill-chip">ГОСТ</span>
+        <span class="skill-chip">Проектирование БД</span>
+        <span class="skill-chip">Описание API</span>
+        <span class="skill-chip">Ролевая модель</span>
+        <span class="skill-chip">Axure</span>
+        <span class="skill-chip">Прототипирование</span>
+        <span class="skill-chip">Описание бизнес-процессов</span>
+        <span class="skill-chip">Аналитика</span>
+        <span class="skill-chip">Логистика</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Техническая документация и справка — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .breadcrumb {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+
+    .page-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .page-count {
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 300;
+      color: var(--accent-light);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      align-self: center;
+    }
+
+    /* ── PROJECTS ── */
+    .projects {
+      padding: 5rem 6rem 6rem;
+    }
+
+    .project {
+      border-bottom: 1px solid var(--rule);
+      padding: 4rem 0;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+
+    .project:first-child { padding-top: 0; }
+    .project:last-child { border-bottom: none; }
+
+    .project-meta-col {}
+
+    .project-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .project-company {
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.05em;
+    }
+
+    .project-content-col {}
+
+    .project-desc {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+    }
+
+    .project-section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.85rem;
+      margin-top: 1.75rem;
+    }
+
+    .project-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .project-list li {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+
+    .project-list li::before {
+      content: '—';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    .project-results {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .result-item {}
+
+    .result-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+
+    .result-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.35rem;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-link::after { content: ' →'; }
+
+    @media (max-width: 900px) {
+      .page-hero { padding: 9rem 2rem 4rem; grid-template-columns: 1fr; }
+      .page-count { display: none; }
+      .projects { padding: 3rem 2rem; }
+      .project { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero reveal">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Портфолио</a><span>/</span>Техническая документация</p>
+      <div class="page-icon">📋</div>
+      <h1 class="page-title">Техническая документация<br>и справка</h1>
+    </div>
+    <div class="page-count">01</div>
+  </div>
+
+  <div class="projects">
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Яндекс · 2021–2025</p>
+        <h2 class="project-title">Справка мобильных Яндекс Карт и Навигатора</h2>
+        <p class="project-company">Компания: Яндекс</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">На основе анализа метрики и поисковых запросов переработала структуру справки и актуализировала описание статей.</p>
+
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Провела анализ Яндекс Метрики, Wordstat и базы знаний саппорта</li>
+          <li>Изменила структуру справки с навигационной (по интерфейсам) на пользовательскую (по сценариям)</li>
+          <li>Переименовала статьи под реальные поисковые запросы</li>
+          <li>Добавила новые страницы на основе обращений в поддержку: «Решение проблем», инструкции по Алисе, удалению приложения, координатам</li>
+          <li>Объединила дублирующие статьи в единые сценарные страницы</li>
+        </ul>
+
+        <div class="project-results">
+          <div class="result-item">
+            <span class="result-num">+3,6%</span>
+            <span class="result-label">Переходы из поисковых систем</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">+6%</span>
+            <span class="result-label">Переходы из Мобильного Яндекса</span>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a href="https://yandex.ru/support/m-maps/ru/" class="project-link" target="_blank" rel="noopener">Справка мобильных Яндекс Карт</a>
+          <a href="https://yandex.ru/support/navigator/ru/" class="project-link" target="_blank" rel="noopener">Справка Яндекс Навигатора</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

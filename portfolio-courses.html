@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Электронные курсы и обучение — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+    .breadcrumb { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+    .page-icon { font-size: 2.5rem; line-height: 1; margin-bottom: 1rem; }
+    .page-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; }
+    .page-count { font-family: var(--serif); font-size: 6rem; font-weight: 300; color: var(--accent-light); line-height: 1; letter-spacing: -0.04em; align-self: center; }
+    .projects { padding: 5rem 6rem 6rem; }
+    .project { border-bottom: 1px solid var(--rule); padding: 4rem 0; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+    .project:first-child { padding-top: 0; }
+    .project:last-child { border-bottom: none; }
+    .project-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .project-title { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; line-height: 1.2; margin-bottom: 1rem; }
+    .project-company { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.05em; }
+    .project-desc { font-size: 0.9rem; line-height: 1.85; color: var(--ink-light); margin-bottom: 1.5rem; }
+    .project-section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.85rem; margin-top: 1.5rem; }
+    .project-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .project-list li { display: flex; gap: 1rem; font-size: 0.875rem; line-height: 1.7; color: var(--ink-light); }
+    .project-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 0.05em; }
+    .project-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+    .project-link:hover { border-color: var(--accent); color: var(--accent); }
+    .project-link::after { content: ' →'; }
+    @media (max-width: 900px) {
+      .page-hero { padding: 9rem 2rem 4rem; grid-template-columns: 1fr; }
+      .page-count { display: none; }
+      .projects { padding: 3rem 2rem; }
+      .project { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero reveal">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Портфолио</a><span>/</span>Электронные курсы</p>
+      <div class="page-icon">🎓</div>
+      <h1 class="page-title">Электронные курсы<br>и обучение</h1>
+    </div>
+    <div class="page-count">04</div>
+  </div>
+
+  <div class="projects">
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа · Альфа-Банк</p>
+        <h2 class="project-title">Игровой диалоговый тренажёр для Альфа-Банка</h2>
+        <p class="project-company">Компания: Лабмедиа · Заказчик: Альфа-Банк</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Комплексный проект: продуктовые курсы + многоуровневый игровой тренажёр для обучения сотрудников первой линии продаж.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Разработала спецификацию тренажёра и ТЗ на интеграцию с системой WebTutor</li>
+          <li>Написала диалоговые кейсы для трёх уровней игры (по числу должностей)</li>
+          <li>Разработала сценарии курсов; один курс собрала самостоятельно в iSpring Suite 8.0</li>
+          <li>Контролировала все этапы разработки, презентовала проект заказчику</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа</p>
+        <h2 class="project-title">Курс «Один день мерчендайзера»</h2>
+        <p class="project-company">Компания: Лабмедиа</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс наглядно демонстрирует методы работы мерчендайзера в торговых точках и возможные ошибки в работе с клиентами. Первый модуль — тестирование на внимательность для быстрого отбора кандидатов при массовом найме.</p>
+        <div class="project-links">
+          <a href="https://labmedia.su/portfolio/avtomatizatsiya-obucheniya-/" class="project-link" target="_blank" rel="noopener">Описание проекта</a>
+          <a href="https://youtu.be/qPbEOAhgmik?si=YQbfzyS0y40k8XLm" class="project-link" target="_blank" rel="noopener">Ролик на YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа · Хоумкредит Банк</p>
+        <h2 class="project-title">Серия курсов «Фин.Класс»</h2>
+        <p class="project-company">Компания: Лабмедиа · Заказчик: Хоумкредит Банк</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Серия курсов о финансовой грамотности для клиентов банка. На примерах из жизни показано, как планировать семейный бюджет и жить в условиях кредита.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Описала концепцию, взаимодействовала с экспертом</li>
+          <li>Разработала сценарий первого курса</li>
+          <li>Курировала разработку всей серии</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://labmedia.su/blog/portal-finansovoy-gramotnosti-keys.htm" class="project-link" target="_blank" rel="noopener">Описание кейса</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа · Уралкалий</p>
+        <div class="project-badge">Топ-10 конкурса 2016</div>
+        <h2 class="project-title">Курс о производственном процессе для «Уралкалий»</h2>
+        <p class="project-company">Компания: Лабмедиа · Заказчик: ПАО «Уралкалий»</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс для всех сотрудников компании о добыче, переработке и транспортировке хлористого калия. В основе — сторителлинг. Вошёл в топ-10 лучших на Конкурсе электронных курсов 2016.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Описала концепцию, взаимодействовала с экспертами</li>
+          <li>Разработала сценарий, контролировала все этапы</li>
+          <li>Презентовала курс заказчику</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1cBKbAfzhBNgQne7w8CMddtBOwYbrw4mT/view?usp=sharing" class="project-link" target="_blank" rel="noopener">Скриншоты курса</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа · Уралсиб</p>
+        <div class="project-badge">Топ-10 конкурса 2017</div>
+        <h2 class="project-title">Курс «Охрана труда в офисе»</h2>
+        <p class="project-company">Компания: Лабмедиа · Заказчик: ПАО «Уралсиб»</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс с ситуативным подходом: в начале темы — ситуация и варианты решения, затем теория, затем возврат к ситуации. Вошёл в топ-10 на Конкурсе электронных курсов 2017.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Описала концепцию, разработала сценарий</li>
+          <li>Контролировала все этапы разработки</li>
+          <li>Презентовала проект заказчику</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1eHrWlSPdh9de3qVuLReAmURRwnEz1pRT/view?usp=sharing" class="project-link" target="_blank" rel="noopener">Скриншоты курса</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Лабмедиа · МТС</p>
+        <h2 class="project-title">Курс «Путеводитель по закупкам» для МТС</h2>
+        <p class="project-company">Компания: Лабмедиа · Заказчик: МТС</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс-инструкция для участников закупочных процедур: общая информация о том, как работает отдел закупок.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Разработала концепцию и сценарий</li>
+          <li>Взаимодействовала с экспертами заказчика</li>
+          <li>Контролировала разработку визуальной части, сборку и тестирование</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://labmedia.su/portfolio/mts/procurement_guide/" class="project-link" target="_blank" rel="noopener">Описание проекта</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Метрафор · Полиметалл</p>
+        <h2 class="project-title">Курс «Права и достоинство человека»</h2>
+        <p class="project-company">Компания: Метрафор · Заказчик: «Полиметалл»</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс для руководителей о подходе компании к вопросам нарушения прав человека. Информация подаётся небольшими смысловыми блоками с примерами из жизни.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Описала концепцию, участвовала в продаже</li>
+          <li>Контролировала разработку сценария, визуальной части, сборку и тестирование</li>
+          <li>Презентовала заказчику</li>
+        </ul>
+        <div class="project-links">
+          <a href="http://metrafor.ru/projects/course/polymetal/" class="project-link" target="_blank" rel="noopener">Описание на сайте Метрафор</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Метрафор</p>
+        <h2 class="project-title">Магазин курсов и СДО PRO Learning</h2>
+        <p class="project-company">Компания: Метрафор</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Участвовала в создании платформы PRO Learning — магазина готовых электронных курсов со встроенной системой дистанционного обучения.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Описала рекомендации по разработке функционала и дизайна, доработала ТЗ</li>
+          <li>Анализировала рынок e-learning, подбирала темы для готовых курсов</li>
+          <li>Искала авторов учебного материала, взаимодействовала с ними на всех этапах</li>
+          <li>Организовала команду разработки курсов, контролировала все этапы</li>
+          <li>Описала контент для всех страниц магазина и карточек курсов</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://prolearning.ru/" class="project-link" target="_blank" rel="noopener">Платформа PRO Learning</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Метрафор</p>
+        <h2 class="project-title">Курс «Охрана труда в офисе» для СДО PRO Learning</h2>
+        <p class="project-company">Компания: Метрафор</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Курс даёт базовую теорию об охране труда в офисе, а также на реальных примерах показывает последствия несоблюдения правил охраны труда. В курсе много кейсов, которые предлагается решить пользователю.</p>
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Разработала концепцию и сценарий</li>
+          <li>Нашла эксперта и взаимодействовала с ним на протяжении всей разработки</li>
+          <li>Контролировала разработку визуальной части, сборку и тестирование</li>
+        </ul>
+        <div class="project-links">
+          <a href="http://metrafor.ru/stand/kurs_oxrana_truda_demo/3001/story_html5.html?lms=1" class="project-link" target="_blank" rel="noopener">Демо-версия курса</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

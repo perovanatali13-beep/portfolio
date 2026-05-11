@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Малинина Наталья — Технический писатель · UX-редактор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf8f2;
+      --ink: #1a1714;
+      --ink-light: #4a4642;
+      --ink-faint: #9a9490;
+      --accent: #c44b2b;
+      --accent-light: #f0e4de;
+      --rule: #ddd8cf;
+      --serif: 'Cormorant', Georgia, serif;
+      --sans: 'Jost', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 1.4rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 248, 242, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      position: relative;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      padding-top: 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-left {
+      padding: 8rem 4rem 7rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(4.5rem, 9vw, 7.5rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .role-chip {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+      max-width: 40ch;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+      border: 1px solid var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-right {
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .hero-stat {
+      padding: 3rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.3s;
+    }
+
+    .hero-stat:first-child { border-top: 1px solid var(--rule); }
+    .hero-stat:hover { background: rgba(255,255,255,0.6); }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.5rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 7rem 6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+
+    .section-num {
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 300;
+      color: var(--accent-light);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      padding-top: 0.3rem;
+      user-select: none;
+    }
+
+    .section-title-group {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--rule);
+    }
+
+    .service-card {
+      padding: 3rem 2.5rem 3.5rem;
+      border-right: 1px solid var(--rule);
+      transition: background 0.3s;
+    }
+
+    .service-card:last-child { border-right: none; }
+    .service-card:hover { background: rgba(255,255,255,0.75); }
+
+    .service-index {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--accent);
+      opacity: 0.6;
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+    }
+
+    /* ── CASES ── */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .case-card {
+      background: var(--cream);
+      padding: 3.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .case-card:hover { background: rgba(255,255,255,0.85); }
+
+    .case-accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .case-card:hover .case-accent-bar { transform: scaleX(1); }
+
+    .case-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-desc {
+      font-size: 0.875rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+      margin-bottom: 2.5rem;
+    }
+
+    .case-metrics {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .metric-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.4rem;
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-list {
+      border: 1px solid var(--rule);
+    }
+
+    .portfolio-item {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr 2rem;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 2rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, padding-left 0.3s;
+    }
+
+    .portfolio-item:last-child { border-bottom: none; }
+
+    .portfolio-item:hover {
+      background: rgba(255,255,255,0.8);
+      padding-left: 3.5rem;
+    }
+
+    .pi-num {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink-faint);
+    }
+
+    .pi-body { display: flex; align-items: center; gap: 1rem; }
+    .pi-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    .pi-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+    }
+
+    .pi-arrow {
+      color: var(--ink-faint);
+      font-size: 1rem;
+      transition: transform 0.25s, color 0.25s;
+    }
+
+    .portfolio-item:hover .pi-arrow {
+      transform: translateX(5px);
+      color: var(--accent);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem 5rem;
+    }
+
+    .skill-group-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .skill-tag {
+      font-size: 0.76rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--ink-light);
+      color: var(--ink);
+      background: rgba(255,255,255,0.7);
+    }
+
+    /* ── CONTACT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: start;
+    }
+
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.2s, padding-left 0.25s;
+    }
+
+    .contact-link:last-child { border-bottom: none; }
+
+    .contact-link:hover {
+      background: rgba(255,255,255,0.85);
+      padding-left: 2.75rem;
+    }
+
+    .cl-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .cl-text-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .cl-text-value { font-weight: 400; font-size: 0.95rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: none;
+    }
+
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--ink-light);
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 9rem 4rem 6rem; border-right: none; }
+      section { padding: 5rem 4rem; }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .service-card:last-child { border-bottom: none; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      nav { padding: 1.3rem 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.75rem; }
+      .hero-left { padding: 8rem 1.75rem 5rem; }
+      footer { padding: 2rem 1.75rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+      .nav-links { display: none; }
+      nav { padding: 1.1rem 1.75rem; }
+      .section-header { grid-template-columns: 1fr; gap: 0.5rem; }
+      .section-num { font-size: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .portfolio-item { grid-template-columns: 2rem 1fr 1.5rem; gap: 1rem; padding: 1.5rem 1.25rem; }
+      .portfolio-item:hover { padding-left: 2rem; }
+      .hero-name { font-size: clamp(3.5rem, 15vw, 6rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#top" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#skills">Навыки</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" id="top">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Портфолио &amp; Резюме</p>
+      <h1 class="hero-name">Малинина<br><em>Наталья</em></h1>
+      <div class="hero-roles">
+        <span class="role-chip">Технический писатель</span>
+        <span class="role-chip">UX-редактор</span>
+        <span class="role-chip">Системный аналитик</span>
+      </div>
+      <p class="hero-bio">
+        Более 15 лет в IT-продуктах. Превращаю сложное в понятное — для пользователей и разработчиков. Умею работать с данными, писать документацию, проектировать требования и создавать контент, который решает задачи бизнеса.
+      </p>
+      <div class="hero-cta">
+        <a href="#cases" class="btn btn-primary">Смотреть кейсы</a>
+        <a href="#contact" class="btn btn-secondary">Написать мне</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="foto.JPG" alt="Фото" class="hero-photo">
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-header reveal">
+      <div class="section-num">01</div>
+      <div class="section-title-group">
+        <p class="section-label">Направления</p>
+        <h2 class="section-title">Чем могу<br>быть полезна</h2>
+      </div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-index">①</div>
+        <h3 class="service-title">Справка и документация</h3>
+        <p class="service-desc">Анализирую метрику, изучаю поисковые запросы, сверяюсь с базой знаний саппорта и переписываю так, чтобы пользователи находили ответы сами. Результат — меньше обращений в поддержку, больше трафика из поиска.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-index">②</div>
+        <h3 class="service-title">Технические задания</h3>
+        <p class="service-desc">Превращаю требования бизнеса в документ, по которому можно разрабатывать продукт. Интервьюирую заказчиков, собираю требования, описываю архитектуру, API и бизнес-процессы. Снимаю вопросы до начала разработки.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-index">③</div>
+        <h3 class="service-title">UX-тексты и контент</h3>
+        <p class="service-desc">Пишу тексты, которые работают на продукт. Интерфейсные тексты: кнопки, онбординги, сообщения об ошибках, подсказки — каждый текст в интерфейсе это решение UX-задачи.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Cases -->
+  <section id="cases">
+    <div class="section-header reveal">
+      <div class="section-num">02</div>
+      <div class="section-title-group">
+        <p class="section-label">Опыт</p>
+        <h2 class="section-title">Ключевые<br>кейсы</h2>
+      </div>
+    </div>
+    <div class="cases-grid reveal">
+      <a href="case-maps.html" class="case-card" style="text-decoration:none;color:inherit;display:block;">
+        <div class="case-accent-bar"></div>
+        <p class="case-tag">Яндекс · 2021–2025</p>
+        <h3 class="case-title">Редизайн справки мобильных Яндекс Карт</h3>
+        <p class="case-desc">На основе анализа метрики и поисковых запросов переработала структуру справки. Изменила навигацию с интерфейсной на пользовательскую (по сценариям). Переименовала статьи под реальные поисковые запросы. Добавила новые страницы на основе обращений в поддержку. Объединила дублирующие статьи в единые страницы.</p>
+        <div class="case-metrics">
+          <div>
+            <span class="metric-num">+3,6%</span>
+            <span class="metric-label">Из поисковых систем</span>
+          </div>
+          <div>
+            <span class="metric-num">+6%</span>
+            <span class="metric-label">Из Мобильного Яндекса</span>
+          </div>
+        </div>
+      </a>
+      <a href="case-tms.html" class="case-card" style="text-decoration:none;color:inherit;display:block;">
+        <div class="case-accent-bar"></div>
+        <p class="case-tag">Арвато Рус · Системный анализ</p>
+        <h3 class="case-title">ТЗ на систему управления транспортом (TMS)</h3>
+        <p class="case-desc">Интервьюировала заказчиков, собирала и систематизировала требования бизнеса. Описывала архитектуру системы, API и бизнес-процессы. Подготовила техническое задание, которое сняло основные вопросы ещё до начала разработки и позволило команде приступить к работе без лишних итераций.</p>
+        <div class="case-metrics">
+          <div>
+            <span class="metric-num">TMS</span>
+            <span class="metric-label">Транспортная система</span>
+          </div>
+          <div>
+            <span class="metric-num">API</span>
+            <span class="metric-label">Документация</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="section-header reveal">
+      <div class="section-num">03</div>
+      <div class="section-title-group">
+        <p class="section-label">Работы</p>
+        <h2 class="section-title">Портфолио</h2>
+      </div>
+    </div>
+    <div class="portfolio-list reveal">
+      <a href="portfolio-docs.html" class="portfolio-item">
+        <span class="pi-num">01</span>
+        <span class="pi-body">
+          <span class="pi-icon">📋</span>
+          <span class="pi-title">Техническая документация и справка</span>
+        </span>
+        <span class="pi-arrow">→</span>
+      </a>
+      <a href="portfolio-specs.html" class="portfolio-item">
+        <span class="pi-num">02</span>
+        <span class="pi-body">
+          <span class="pi-icon">✏️</span>
+          <span class="pi-title">Технические задания и системный анализ</span>
+        </span>
+        <span class="pi-arrow">→</span>
+      </a>
+      <a href="portfolio-texts.html" class="portfolio-item">
+        <span class="pi-num">03</span>
+        <span class="pi-body">
+          <span class="pi-icon">📝</span>
+          <span class="pi-title">Тексты и интерфейсный контент</span>
+        </span>
+        <span class="pi-arrow">→</span>
+      </a>
+      <a href="portfolio-courses.html" class="portfolio-item">
+        <span class="pi-num">04</span>
+        <span class="pi-body">
+          <span class="pi-icon">🎓</span>
+          <span class="pi-title">Электронные курсы и обучение</span>
+        </span>
+        <span class="pi-arrow">→</span>
+      </a>
+      <a href="portfolio-landings.html" class="portfolio-item">
+        <span class="pi-num">05</span>
+        <span class="pi-body">
+          <span class="pi-icon">🖥️</span>
+          <span class="pi-title">Лендинги и презентации</span>
+        </span>
+        <span class="pi-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <div class="section-num">04</div>
+      <div class="section-title-group">
+        <p class="section-label">Компетенции</p>
+        <h2 class="section-title">Навыки и<br>инструменты</h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="reveal">
+        <p class="skill-group-label">Пишу и редактирую</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Техническая документация</span>
+          <span class="skill-tag">Пользовательская документация</span>
+          <span class="skill-tag">UX-writing</span>
+          <span class="skill-tag">Редактура</span>
+          <span class="skill-tag">Корректура</span>
+          <span class="skill-tag">Интерфейсные тексты</span>
+          <span class="skill-tag">Статьи справки</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group-label">Анализирую и проектирую</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Сбор требований</span>
+          <span class="skill-tag">Написание ТЗ</span>
+          <span class="skill-tag">Описание API</span>
+          <span class="skill-tag">Проектирование БД</span>
+          <span class="skill-tag">Анализ бизнес-процессов</span>
+          <span class="skill-tag">Axure RP</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group-label">Работаю с данными</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Яндекс Метрика</span>
+          <span class="skill-tag">Wordstat</span>
+          <span class="skill-tag">Вебвизор</span>
+          <span class="skill-tag">Вебмастер</span>
+          <span class="skill-tag">Анализ поисковых запросов</span>
+          <span class="skill-tag">SPSS</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group-label">Инструменты</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Markdown</span>
+          <span class="skill-tag">Wiki</span>
+          <span class="skill-tag">DITA</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Arc VCS</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Tilda</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Redmine</span>
+          <span class="skill-tag">AI-инструменты</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group-label">Разработка обучения</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Педагогический дизайн</span>
+          <span class="skill-tag">iSpring Suite</span>
+          <span class="skill-tag">CourseLab</span>
+          <span class="skill-tag">WebTutor</span>
+          <span class="skill-tag">Геймификация</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group-label">Языки</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Русский — родной</span>
+          <span class="skill-tag">Английский — A2</span>
+          <span class="skill-tag">Турецкий — A2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-header reveal">
+      <div class="section-num">05</div>
+      <div class="section-title-group">
+        <p class="section-label">Связь</p>
+        <h2 class="section-title">Контакты</h2>
+      </div>
+    </div>
+    <div class="contact-layout">
+      <div class="reveal">
+        <p class="contact-headline">
+          Готова обсудить<br>
+          ваш <em>проект</em> —<br>
+          пишите в удобный<br>
+          мессенджер
+        </p>
+      </div>
+      <div class="contact-links reveal">
+        <a href="https://t.me/natali_m2" class="contact-link" target="_blank" rel="noopener">
+          <div class="cl-icon">✈</div>
+          <div>
+            <span class="cl-text-label">Telegram</span>
+            <span class="cl-text-value">@natali_m2</span>
+          </div>
+        </a>
+        <a href="mailto:perova.natali13@gmail.com" class="contact-link">
+          <div class="cl-icon">✉</div>
+          <div>
+            <span class="cl-text-label">Email</span>
+            <span class="cl-text-value">perova.natali13@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://wa.me/79159911292" class="contact-link" target="_blank" rel="noopener">
+          <div class="cl-icon">☎</div>
+          <div>
+            <span class="cl-text-label">WhatsApp</span>
+            <span class="cl-text-value">+7 (915) 991-12-92</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('in'), i * 90);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id], div[id="top"]');
+    const links = document.querySelectorAll('.nav-links a');
+
+    const navIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const id = e.target.id;
+          const match = document.querySelector(`.nav-links a[href="#${id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => navIO.observe(s));
+  </script>
+</body>
+</html>

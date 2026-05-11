@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редизайн справки Яндекс Карт — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── CASE HERO ── */
+    .case-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .breadcrumb {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      max-width: 16ch;
+      margin-bottom: 3.5rem;
+    }
+
+    .case-meta {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 0;
+      border: 1px solid var(--rule);
+      width: fit-content;
+    }
+
+    .meta-item {
+      padding: 1.25rem 2rem;
+      border-right: 1px solid var(--rule);
+    }
+    .meta-item:last-child { border-right: none; }
+
+    .meta-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.35rem;
+    }
+
+    .meta-value {
+      font-size: 0.85rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── RESULTS BANNER ── */
+    .results-banner {
+      display: flex;
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+    }
+
+    .result-cell {
+      flex: 1;
+      padding: 3rem 6rem;
+      border-right: 1px solid var(--rule);
+      text-align: center;
+    }
+    .result-cell:last-child { border-right: none; }
+
+    .result-big {
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .result-desc {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.5rem;
+    }
+
+    /* ── BODY ── */
+    .case-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 6rem 7rem;
+    }
+
+    .case-section {
+      margin-bottom: 4rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .case-section:first-child { border-top: none; padding-top: 0; }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .section-emoji {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .case-text {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--ink-light);
+      margin-bottom: 1.25rem;
+    }
+
+    .case-list {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .case-list li {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink-light);
+    }
+
+    .case-list li::before {
+      content: '—';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.1em;
+    }
+
+    .case-subsection {
+      margin-top: 2.5rem;
+    }
+
+    .subsection-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .subsection-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.6rem;
+    }
+
+    .num-list {
+      list-style: none;
+      counter-reset: item;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .num-list li {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink-light);
+      counter-increment: item;
+    }
+
+    .num-list li::before {
+      content: counter(item) ".";
+      color: var(--accent);
+      font-family: var(--serif);
+      font-size: 1rem;
+      flex-shrink: 0;
+      width: 1.25rem;
+    }
+
+    /* ── SKILLS ── */
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill-chip {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── QUOTE ── */
+    .case-quote {
+      margin: 2.5rem 0;
+      padding: 2rem 2.5rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(196, 75, 43, 0.03);
+    }
+
+    .case-quote p {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    /* ── LINKS ── */
+    .case-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.65rem 1.4rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+    .case-link:hover { border-color: var(--accent); color: var(--accent); }
+    .case-link::after { content: ' →'; }
+
+    @media (max-width: 900px) {
+      .case-hero { padding: 9rem 2rem 4rem; }
+      .case-meta { grid-template-columns: 1fr 1fr; }
+      .meta-item:nth-child(2) { border-right: none; }
+      .meta-item:nth-child(3) { border-top: 1px solid var(--rule); }
+      .results-banner { flex-direction: column; }
+      .result-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 2rem; }
+      .result-cell:last-child { border-bottom: none; }
+      .case-body { padding: 3rem 2rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="case-hero reveal">
+    <p class="breadcrumb"><a href="index.html">Главная</a><span>/</span><a href="index.html#cases">Ключевые кейсы</a><span>/</span>Яндекс Карты</p>
+    <h1 class="case-title">Редизайн справки мобильных Яндекс Карт</h1>
+    <div class="case-meta">
+      <div class="meta-item">
+        <p class="meta-label">Роль</p>
+        <p class="meta-value">UX-редактор, технический писатель</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Компания</p>
+        <p class="meta-value">Яндекс</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Период</p>
+        <p class="meta-value">2021–2025</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Инструменты</p>
+        <p class="meta-value">Метрика · Wordstat · Вебвизор · Markdown · Wiki · Arc VCS</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results banner -->
+  <div class="results-banner reveal">
+    <div class="result-cell">
+      <div class="result-big">+3,6%</div>
+      <p class="result-desc">Переходы из поисковых систем</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-big">+6%</div>
+      <p class="result-desc">Переходы из Мобильного Яндекса</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-big">5</div>
+      <p class="result-desc">Новых разделов в справке</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="case-body">
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🔍</span> Контекст</h2>
+      <p class="case-text">Яндекс Карты — один из крупнейших картографических сервисов России с многомиллионной аудиторией. Справка мобильного приложения — основная точка самообслуживания: сюда попадают пользователи, которые не могут разобраться с функциями продукта или столкнулись с проблемой.</p>
+      <p class="case-text">Я работала в команде технических писателей Яндекса в роли редактора и руководителя редакции. В числе моих задач была поддержка и улучшение документации для пользовательских продуктов компании. Одной из ключевых задач была переработка структуры справки мобильных Яндекс Карт на основе данных.</p>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">❗</span> Проблема</h2>
+      <p class="case-text">Перед началом работы изучила метрику и выявила системные проблемы:</p>
+      <ul class="case-list">
+        <li>Пользователи не находили нужные статьи — основной источник трафика в справку это поисковые системы, но заголовки статей не совпадали с реальными поисковыми запросами пользователей.</li>
+        <li>Структура не соответствовала пути пользователя — например, 4 отдельные статьи про офлайн-карты вместо одной понятной; статьи про «обычную линейку» и «масштабную линейку» были разделены, пользователи постоянно путали их и переходили между ними.</li>
+        <li>Часть функций не была видна в поиске вообще — страница про Алису была спрятана внутри статьи про настройки приложения, поисковых переходов на неё не было совсем.</li>
+        <li>Несоответствие названий и запросов — статья называлась «Карты без интернета», а пользователи искали «офлайн карты»; статья «Версия приложения» описывала обновление, а не версию.</li>
+        <li>Команда саппорта получала типовые вопросы, ответы на которые отсутствовали в справке: как удалить приложение, как поделиться координатами, как решить технические проблемы.</li>
+      </ul>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🎯</span> Задача</h2>
+      <p class="case-text">Переработать структуру и содержание справки мобильных Яндекс Карт так, чтобы:</p>
+      <ol class="num-list">
+        <li>Пользователи находили ответы через поисковые системы по своим реальным запросам.</li>
+        <li>Снизилась нагрузка на команду саппорта по типовым вопросам.</li>
+        <li>Справка отражала актуальное состояние продукта.</li>
+      </ol>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">⚙️</span> Что я сделала</h2>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">1. Анализ аудитории и метрики справки</h3>
+        <p class="case-text">Изучила данные Яндекс Метрики и составила портрет аудитории:</p>
+        <ul class="case-list">
+          <li>Основная аудитория — в среднем 25–44 лет. Вывод: статьи должны быть написаны простым языком с подробными пошаговыми инструкциями.</li>
+          <li>Справку читают преимущественно с мобильных устройств — значит, статьи не должны быть перегружены, настройки лучше разбивать по отдельным сценариям.</li>
+          <li>Большинство пользователей из России, но также есть и из других стран — нужно указывать ограничения в работе некоторых функций.</li>
+          <li>Основной трафик приходит из поиска — поэтому поисковые запросы стали главным ориентиром при работе с заголовками.</li>
+        </ul>
+        <p class="case-text">Выявила топ популярных страниц и топ непосещаемых: непосещаемые страницы дополнительно проверили на актуальность, реструктуризировали в справке.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">2. Анализ поисковых запросов (Метрика + Wordstat)</h3>
+        <p class="case-text">Сопоставила реальные поисковые запросы с заголовками статей справки. Нашла критические расхождения, например:</p>
+        <ul class="case-list">
+          <li>Пользователи искали «офлайн карты», а статья называлась «Карты без интернета».</li>
+          <li>Запросы «скачать яндекс карты» вели не на страницу установки приложения, а на скачивание офлайн-карт.</li>
+          <li>По запросам «обновить яндекс карты», «удалить приложение» справка не появлялась в результатах.</li>
+          <li>Статья про Алису не индексировалась — поисковых переходов на неё не было вовсе.</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">3. Анализ базы знаний саппорта</h3>
+        <p class="case-text">Изучила обращения в поддержку, нашла типовые вопросы, которые не были покрыты в справке. На основе этого:</p>
+        <ul class="case-list">
+          <li>Добавила страницу «Решение проблем» с самыми частыми техническими сценариями — чтобы пользователи сначала пробовали решить вопрос самостоятельно, а потом шли в поддержку.</li>
+          <li>В статьи про транспорт, парковки и офлайн-карты добавила блоки с ответами на частые вопросы.</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">4. Переработка структуры и содержания</h3>
+        <p class="case-text">На основе данных внесла конкретные изменения, например:</p>
+
+        <p class="subsection-label">Установка приложения</p>
+        <ul class="case-list">
+          <li>Переименовала подзаголовок в «Скачать приложение» — по запросу «скачать яндекс карты» пользователи стали попадать на нужную страницу.</li>
+          <li>Выделила отдельным подзаголовком инструкцию по обновлению.</li>
+          <li>Добавила инструкции «Как посмотреть версию приложения» и «Как удалить приложение».</li>
+        </ul>
+
+        <p class="subsection-label">Офлайн-карты</p>
+        <ul class="case-list">
+          <li>Объединила 4 отдельные статьи в одну.</li>
+          <li>Переименовала «Карты без интернета» → «Карты офлайн» в соответствии с реальными поисковыми запросами.</li>
+        </ul>
+
+        <p class="subsection-label">Линейка и измерение расстояния</p>
+        <ul class="case-list">
+          <li>Объединила описание обычной и масштабной линейки в одну статью — пользователи переходили между ними.</li>
+        </ul>
+
+        <p class="subsection-label">Алиса</p>
+        <ul class="case-list">
+          <li>Вынесла описание в отдельную статью вместо раздела внутри настроек.</li>
+          <li>Добавила инструкцию про звонки с Алисой.</li>
+        </ul>
+
+        <p class="subsection-label">Решение проблем</p>
+        <ul class="case-list">
+          <li>Создала новую страницу с типовыми техническими сценариями на основе обращений в саппорт.</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="subsection-title">5. Обеспечение актуальности</h3>
+        <ul class="case-list">
+          <li>Согласовывала изменения с командой саппорта и заказчиками.</li>
+          <li>Поддерживала локализованные версии документов в актуальном состоянии.</li>
+          <li>Настройка редиректов привела к снижению показателей отказов по справке.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">📊</span> Результат</h2>
+      <p class="case-text">Общий трафик (период 2023–2024 vs 2022–2023):</p>
+      <ul class="case-list">
+        <li>Переходы из поисковых систем выросли на <strong>3,6%</strong></li>
+        <li>Переходы из Мобильного Яндекса выросли на <strong>6%</strong></li>
+      </ul>
+      <p class="case-text">По конкретным страницам:</p>
+      <ul class="case-list">
+        <li><strong>Установка</strong> — пользователи по запросам «скачать яндекс карты» и «скачать приложение карты» стали попадать на нужную страницу; посещаемость страницы выросла.</li>
+        <li><strong>Офлайн-карты</strong> — переходы по запросу «скачать яндекс карты» на эту страницу прекратились; зато появился значительный поток по запросам «офлайн карты».</li>
+        <li><strong>Линейка</strong> — пользователи стали приходить по обоим видам запросов («линейка» и «измерить расстояние») на одну страницу.</li>
+        <li><strong>Алиса</strong> — новая страница проиндексировалась, появился стабильный поток пользователей из поиска по запросам про работу Алисы в Картах.</li>
+        <li><strong>Решение проблем</strong> — новая страница стабильно получает трафик, запросы пользователей совпадают с описанием статьи.</li>
+      </ul>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">💡</span> Вывод</h2>
+      <div class="case-quote">
+        <p>Пользователи формулируют вопросы иначе, чем команда описывает функции продукта. Разрыв между языком продукта и языком пользователя — это и есть основная зона работы UX-редактора.</p>
+      </div>
+      <p class="case-text">Хорошая справка — это не описание функционала. Это ответы на вопросы, которые пользователь уже несёт в голове, когда открывает поиск. Данные Метрики и Wordstat позволяют понять этот язык и перевести на него контент.</p>
+    </div>
+
+    <div class="case-section reveal">
+      <h2 class="section-heading"><span class="section-emoji">🛠️</span> Навыки, использованные в проекте</h2>
+      <div class="skill-chips">
+        <span class="skill-chip">UX-writing</span>
+        <span class="skill-chip">Яндекс Метрика</span>
+        <span class="skill-chip">Wordstat</span>
+        <span class="skill-chip">Вебвизор</span>
+        <span class="skill-chip">Анализ поисковых запросов</span>
+        <span class="skill-chip">SEO-оптимизация контента</span>
+        <span class="skill-chip">Редактура</span>
+        <span class="skill-chip">Структурирование контента</span>
+        <span class="skill-chip">Работа с базой знаний саппорта</span>
+        <span class="skill-chip">Локализация</span>
+        <span class="skill-chip">Markdown</span>
+        <span class="skill-chip">Wiki</span>
+        <span class="skill-chip">Arc VCS</span>
+      </div>
+      <div class="case-links">
+        <a href="https://yandex.ru/support/m-maps/ru/" class="case-link" target="_blank" rel="noopener">Справка мобильных Яндекс Карт</a>
+        <a href="https://yandex.ru/support/navigator/ru/" class="case-link" target="_blank" rel="noopener">Справка Яндекс Навигатора</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

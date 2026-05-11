@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Технические задания и системный анализ — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+    .breadcrumb {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+    .page-icon { font-size: 2.5rem; line-height: 1; margin-bottom: 1rem; }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .page-count {
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 300;
+      color: var(--accent-light);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      align-self: center;
+    }
+    .projects { padding: 5rem 6rem 6rem; }
+    .project {
+      border-bottom: 1px solid var(--rule);
+      padding: 4rem 0;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+    .project:first-child { padding-top: 0; }
+    .project:last-child { border-bottom: none; }
+    .project-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .project-company { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.05em; }
+    .project-desc { font-size: 0.9rem; line-height: 1.85; color: var(--ink-light); margin-bottom: 2rem; }
+    .project-section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.85rem;
+      margin-top: 1.75rem;
+    }
+    .project-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .project-list li {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+    .project-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 0.05em; }
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .tool-tag {
+      font-size: 0.72rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+    .project-link:hover { border-color: var(--accent); color: var(--accent); }
+    .project-link::after { content: ' →'; }
+
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+    .metric { }
+    .metric-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+    .metric-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.35rem; }
+
+    @media (max-width: 900px) {
+      .page-hero { padding: 9rem 2rem 4rem; grid-template-columns: 1fr; }
+      .page-count { display: none; }
+      .projects { padding: 3rem 2rem; }
+      .project { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero reveal">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Портфолио</a><span>/</span>Технические задания</p>
+      <div class="page-icon">✏️</div>
+      <h1 class="page-title">Технические задания<br>и системный анализ</h1>
+    </div>
+    <div class="page-count">02</div>
+  </div>
+
+  <div class="projects">
+
+    <article class="project reveal">
+      <div class="project-meta-col">
+        <p class="project-tag">Арвато Рус · 2017–2018</p>
+        <h2 class="project-title">ТЗ на систему управления транспортом (TMS)</h2>
+        <p class="project-company">Компания: ООО «Текмэн» · Заказчик: Арвато Рус</p>
+      </div>
+      <div class="project-content-col">
+        <p class="project-desc">Разработала техническое задание на систему управления транспортом (TMS) для крупного логистического провайдера e-commerce. «Арвато Рус» ежемесячно обрабатывает до 1 млн отправлений, работая с 10 службами доставки.</p>
+
+        <p class="project-section-label">Что сделала</p>
+        <ul class="project-list">
+          <li>Провела интервьюирование заказчика и сбор требований от 6 подразделений компании</li>
+          <li>Описала полный жизненный цикл отправления: от заказа до доставки, возврата и аналитики</li>
+          <li>Спроектировала архитектуру системы: 3 компонента, 9 таблиц БД, ролевую модель из 7 ролей</li>
+          <li>Описала API-интеграции с 6 службами доставки (DPD, СДЭК, Boxberry, PickPoint, СПСР, МаксиПост)</li>
+          <li>Разработала механизм унификации статусов от 10 служб доставки в единый формат</li>
+          <li>Спроектировала 9 аналитических отчётов</li>
+          <li>Создала интерактивные прототипы в Axure для всех экранных форм</li>
+        </ul>
+
+        <div class="metrics-row">
+          <div class="metric">
+            <span class="metric-num">1 млн</span>
+            <span class="metric-label">Отправлений в месяц</span>
+          </div>
+          <div class="metric">
+            <span class="metric-num">10</span>
+            <span class="metric-label">Служб доставки</span>
+          </div>
+          <div class="metric">
+            <span class="metric-num">9</span>
+            <span class="metric-label">Таблиц БД</span>
+          </div>
+        </div>
+
+        <div class="project-tools">
+          <span class="tool-tag">Axure RP</span>
+          <span class="tool-tag">JSON</span>
+          <span class="tool-tag">Microsoft Word</span>
+        </div>
+
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1DDqpYZ6AiiNFkfgH9aY27HCwBsGfHFn_/view?usp=sharing" class="project-link" target="_blank" rel="noopener">Пример отрывка ТЗ</a>
+          <a href="https://drive.google.com/file/d/1iYYtlB5t_d6zTvb_PQUdvXVv11IuhkyD/view?usp=sharing" class="project-link" target="_blank" rel="noopener">Схема передачи данных</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
