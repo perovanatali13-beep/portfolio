@@ -459,6 +459,75 @@
       color: var(--accent);
     }
 
+    /* ── EXPERIENCE ── */
+    .exp-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .exp-column-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2.5rem;
+    }
+
+    .exp-item {
+      padding-bottom: 2.25rem;
+      margin-bottom: 2.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    .exp-date {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+
+    .exp-role {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-desc {
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: var(--ink-light);
+    }
+
+    .exp-sublabel {
+      margin-top: 3rem;
+    }
+
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
@@ -611,6 +680,7 @@
       .service-card:nth-last-child(-n+2):nth-child(odd):last-child { border-bottom: none; }
       .service-card:last-child { border-bottom: none; }
       .cases-grid { grid-template-columns: 1fr; }
+      .exp-layout { grid-template-columns: 1fr; gap: 3.5rem; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
       nav { padding: 1.3rem 2.5rem; }
@@ -640,6 +710,7 @@
       <li><a href="#services">Услуги</a></li>
       <li><a href="#portfolio">Портфолио</a></li>
       <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#experience">Опыт</a></li>
       <li><a href="#skills">Навыки</a></li>
       <li><a href="#contact">Контакты</a></li>
     </ul>
@@ -795,10 +866,135 @@
     </div>
   </section>
 
+  <!-- Experience & Education -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <div class="section-num">04</div>
+      <div class="section-title-group">
+        <p class="section-label">Резюме</p>
+        <h2 class="section-title">Опыт и<br>образование</h2>
+      </div>
+    </div>
+    <div class="exp-layout">
+      <div class="exp-column reveal">
+        <p class="exp-column-label">Опыт работы</p>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Фрилансер</span>
+            <span class="exp-date">Март 2026 — н.в.</span>
+          </div>
+          <p class="exp-role">Разработчик сайтов</p>
+          <p class="exp-desc">Собираю сайты в Tilda, работаю с AI-инструментами (vibe coding), наполняю контентом, настраиваю SEO и аналитику.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Яндекс</span>
+            <span class="exp-date">Авг 2021 — Окт 2025</span>
+          </div>
+          <p class="exp-role">Технический писатель · Руководитель редакции</p>
+          <p class="exp-desc">Справка мобильных Яндекс Карт, Навигатора и Яндекс Заправки. Переработала структуру на основе анализа метрики — переходы из поиска выросли на +3,6%, из Мобильного Яндекса на +6%. Организовала работу редакции с нуля, обучала команду, автоматизировала отчётность.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Метрафор</span>
+            <span class="exp-date">Май 2018 — Июнь 2021</span>
+          </div>
+          <p class="exp-role">Аналитик · Методолог</p>
+          <p class="exp-desc">Проектировала электронные курсы любой сложности, участвовала в системных проектах в роли аналитика. Ставила задачи команде разработки, участвовала в продажах.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Текмэн</span>
+            <span class="exp-date">Ноя 2017 — Май 2018</span>
+          </div>
+          <p class="exp-role">Аналитик</p>
+          <p class="exp-desc">ТЗ на разработку систем, сайтов и приложений. Интерактивные макеты в Axure, описание бизнес-процессов, инструкции для пользователей.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Лабмедиа</span>
+            <span class="exp-date">Сен 2013 — Ноя 2017</span>
+          </div>
+          <p class="exp-role">Ведущий педагогический дизайнер</p>
+          <p class="exp-desc">Проектировала курсы: симуляторы, геймификация, обучающие игры. Руководила командой педдизайнеров. Разработала систему грейдов и программу адаптации — трудозатраты снизились вдвое.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">ЯрГУ им. Демидова</span>
+            <span class="exp-date">Дек 2011 — Июль 2013</span>
+          </div>
+          <p class="exp-role">Ассистент кафедры социологии</p>
+          <p class="exp-desc">Преподавание социологических дисциплин, методическая работа.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">LEANCOR</span>
+            <span class="exp-date">Март 2010 — Ноя 2011</span>
+          </div>
+          <p class="exp-role">Ассистент менеджера</p>
+          <p class="exp-desc">Организация полевых исследований, анализ результатов опросов в SPSS.</p>
+        </div>
+      </div>
+      <div class="exp-column reveal">
+        <p class="exp-column-label">Образование</p>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">ЯрГУ им. П.Г. Демидова</span>
+            <span class="exp-date">2013</span>
+          </div>
+          <p class="exp-role">Магистр социологии</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">ЯГПУ им. К.Д. Ушинского</span>
+            <span class="exp-date">2011</span>
+          </div>
+          <p class="exp-role">Бакалавр социологии</p>
+        </div>
+        <p class="exp-column-label exp-sublabel">Курсы</p>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Bang Bang Education</span>
+            <span class="exp-date">2026</span>
+          </div>
+          <p class="exp-role">UX/UI-дизайнер, продуктовый дизайнер</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Яндекс</span>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-role">Технический писатель · Руководитель</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Актив-АйТи</span>
+            <span class="exp-date">2017</span>
+          </div>
+          <p class="exp-role">Экспертное оценивание ЭОР</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Ракурс</span>
+            <span class="exp-date">2016</span>
+          </div>
+          <p class="exp-role">Геймификация в образовании</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">ЯрГУ</span>
+            <span class="exp-date">2013</span>
+          </div>
+          <p class="exp-role">Региональная журналистика</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Skills -->
   <section id="skills">
     <div class="section-header reveal">
-      <div class="section-num">04</div>
+      <div class="section-num">05</div>
       <div class="section-title-group">
         <p class="section-label">Компетенции</p>
         <h2 class="section-title">Навыки и<br>инструменты</h2>
@@ -883,7 +1079,7 @@
   <!-- Contact -->
   <section id="contact">
     <div class="section-header reveal">
-      <div class="section-num">05</div>
+      <div class="section-num">06</div>
       <div class="section-title-group">
         <p class="section-label">Связь</p>
         <h2 class="section-title">Контакты</h2>
