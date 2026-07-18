@@ -2,6 +2,9 @@
   "redirects": [
     {
       "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "website-agent.*\\.vercel\\.app" }
+      ],
       "destination": "https://nmalinina.vercel.app/$1",
       "permanent": true
     }
