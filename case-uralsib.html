@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Курс «Охрана труда в офисе» для Уралсиб — скриншоты — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+    .breadcrumb { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+    .page-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .page-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.4vw, 3.8rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; max-width: 20ch; }
+    .page-company { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.05em; margin-top: 1.25rem; }
+    .page-count { font-family: var(--serif); font-size: 6rem; font-weight: 300; color: var(--accent-light); line-height: 1; letter-spacing: -0.04em; align-self: center; }
+
+    .shots { padding: 5rem 6rem 6rem; }
+    .shots-intro { font-size: 0.9rem; line-height: 1.85; color: var(--ink-light); max-width: 62ch; margin-bottom: 3rem; }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .shot {
+      display: block;
+      padding: 0;
+      border: 1px solid var(--rule);
+      background: #fff;
+      cursor: zoom-in;
+      transition: border-color 0.2s, transform 0.2s;
+      width: 100%;
+    }
+    .shot:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .shot img { display: block; width: 100%; height: auto; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(26, 23, 20, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      cursor: zoom-out;
+    }
+    .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--cream);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+
+    .back-row { padding: 0 6rem 5rem; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+    .back-link:hover { border-color: var(--accent); color: var(--accent); }
+    .back-link::before { content: '← '; }
+
+    @media (max-width: 900px) {
+      .page-hero { padding: 9rem 1.75rem 4rem; grid-template-columns: 1fr; }
+      .page-count { display: none; }
+      .shots { padding: 3rem 1.75rem; }
+      .back-row { padding: 0 1.75rem 3rem; }
+      .shot-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .lightbox { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#experience">Опыт</a></li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero reveal">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Портфолио</a><span>/</span><a href="portfolio-courses.html">Электронные курсы</a><span>/</span>Скриншоты</p>
+      <div class="page-badge">Топ-10 конкурса 2017</div>
+      <h1 class="page-title">Электронный курс «Охрана труда в офисе» для Уралсиб</h1>
+      <p class="page-company">Компания: Лабмедиа · Заказчик: ПАО «Уралсиб»</p>
+    </div>
+    <div class="page-count">08</div>
+  </div>
+
+  <div class="shots">
+    <p class="shots-intro reveal">Курс с ситуативным подходом: в начале темы — ситуация и варианты решения, затем теория, затем возврат к ситуации. Вошёл в топ-10 на Конкурсе электронных курсов 2017.</p>
+
+    <div class="shot-grid reveal">
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-1.jpg" alt="Слайд «Что делать при возникновении несчастного случая»: четыре шага с иконками" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-2.jpg" alt="Слайд «Охрана труда женщин»: нормы предельно допустимых нагрузок при подъёме тяжестей" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-3.jpg" alt="Ситуация с вопросом «Что сначала нужно сделать Сергею?» и тремя вариантами ответа" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-4.jpg" alt="Обратная связь при неверном ответе: последствия показаны в самой сцене" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-5.jpg" alt="Обратная связь при верном ответе с пояснением, почему это правильное действие" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-6.jpg" alt="Слайд «Отстранение от работы»: четыре основания с иконками и ссылка на статью 76 ТК РФ" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-7.jpg" alt="Слайд «Обязанности работодателя при возникновении несчастного случая» в виде карусели" loading="lazy"></button>
+      <button class="shot" type="button"><img src="img/case-uralsib/ot-8.jpg" alt="Меню курса: четыре раздела, плитки тем и список уроков внутри выбранной темы" loading="lazy"></button>
+    </div>
+  </div>
+
+  <div class="back-row reveal">
+    <a href="portfolio-courses.html" class="back-link">Ко всем курсам</a>
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── LIGHTBOX ──
+    let lightbox = null;
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.remove();
+      lightbox = null;
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(src, alt) {
+      closeLightbox();
+      lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Закрыть">&times;</button>';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      lightbox.appendChild(img);
+      lightbox.addEventListener('click', closeLightbox);
+      document.body.appendChild(lightbox);
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.querySelectorAll('.shot').forEach(btn => {
+      const img = btn.querySelector('img');
+      btn.setAttribute('aria-label', 'Открыть скриншот: ' + img.alt);
+      btn.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

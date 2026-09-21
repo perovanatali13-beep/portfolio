@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проектирование и сборка курсов в авторской среде — скриншоты — Малинина Наталья</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+    .breadcrumb { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.6rem; }
+    .page-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.4vw, 3.8rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; max-width: 20ch; }
+    .page-company { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.05em; margin-top: 1.25rem; }
+    .page-count { font-family: var(--serif); font-size: 6rem; font-weight: 300; color: var(--accent-light); line-height: 1; letter-spacing: -0.04em; align-self: center; }
+
+    .shots { padding: 5rem 6rem 6rem; }
+
+    .shot-group { border-bottom: 1px solid var(--rule); padding-bottom: 4rem; margin-bottom: 4rem; }
+    .shot-group:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+    .group-num { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .group-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; line-height: 1.2; margin-bottom: 1rem; max-width: 26ch; }
+    .group-desc { font-size: 0.9rem; line-height: 1.85; color: var(--ink-light); max-width: 62ch; }
+
+    .tool-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      border: 1px solid var(--rule);
+      padding: 0.35rem 0.9rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+    .tool-label strong { color: var(--accent); font-weight: 400; }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .shot {
+      display: block;
+      padding: 0;
+      border: 1px solid var(--rule);
+      background: #fff;
+      cursor: zoom-in;
+      transition: border-color 0.2s, transform 0.2s;
+      width: 100%;
+    }
+    .shot:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .shot img { display: block; width: 100%; height: auto; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(26, 23, 20, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      cursor: zoom-out;
+    }
+    .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--cream);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+
+    .back-row { padding: 0 6rem 5rem; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+    .back-link:hover { border-color: var(--accent); color: var(--accent); }
+    .back-link::before { content: '← '; }
+
+    @media (max-width: 900px) {
+      .page-hero { padding: 9rem 1.75rem 4rem; grid-template-columns: 1fr; }
+      .page-count { display: none; }
+      .shots { padding: 3rem 1.75rem; }
+      .back-row { padding: 0 1.75rem 3rem; }
+      .shot-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .lightbox { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Н. Малинина</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Услуги</a></li>
+      <li><a href="index.html#portfolio">Портфолио</a></li>
+      <li><a href="index.html#cases">Кейсы</a></li>
+      <li><a href="index.html#experience">Опыт</a></li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero reveal">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Портфолио</a><span>/</span><a href="portfolio-courses.html">Электронные курсы</a><span>/</span>Скриншоты</p>
+      <h1 class="page-title">Проектирование и сборка курсов в авторской среде</h1>
+      <p class="page-company">Компания: Лабмедиа · CourseLab, iSpring Suite</p>
+    </div>
+    <div class="page-count">16</div>
+  </div>
+
+  <div class="shots">
+
+    <section class="shot-group reveal">
+      <p class="group-num">Группа 01</p>
+      <h2 class="group-title">Простые слайдовые курсы о продуктах компании</h2>
+      <p class="group-desc">Визуальные элементы сделаны и обработаны дизайнером.</p>
+
+      <p class="tool-label">Средство сборки — <strong>CourseLab</strong></p>
+      <div class="shot-grid">
+        <button class="shot" type="button"><img src="img/courses-authoring/courselab-1.png" alt="Слайд «Применение» курса о теплоизоляционных материалах XPS ТЕХНОНИКОЛЬ CARBON с переключением между вкладками" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/courselab-2.png" alt="Слайд «Введение»: схема принципа производства экструзионного пенополистирола с выносками" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/courselab-3.png" alt="Слайд «Пути инноваций»: нумерованный список направлений исследований научного центра «ТехноНИКОЛЬ»" loading="lazy"></button>
+      </div>
+
+      <p class="tool-label">Средство сборки — <strong>iSpring Suite</strong></p>
+      <div class="shot-grid">
+        <button class="shot" type="button"><img src="img/courses-authoring/ispring-1.jpg" alt="Слайд курса Альфа-Банка «Партнёрские программы для женщин и мужчин» с описанием двух карт" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/ispring-2.jpg" alt="Слайд курса Альфа-Банка «Что такое сегментация клиентов»: алгоритм сервиса и таблица сегментов" loading="lazy"></button>
+      </div>
+    </section>
+
+    <section class="shot-group reveal">
+      <p class="group-num">Группа 02</p>
+      <h2 class="group-title">Курсы по работе в программном обеспечении</h2>
+      <p class="group-desc">В курсе используются элементы симуляции работы в программном обеспечении: пользователь нажимает на активные области скриншотов, воспроизводя реальные действия с системой.</p>
+
+      <p class="tool-label">Средство сборки — <strong>CourseLab</strong></p>
+      <div class="shot-grid">
+        <button class="shot" type="button"><img src="img/courses-authoring/sim-1.png" alt="Симуляция 1С:Предприятие CRM: подсказка «Откройте вкладку Документы» поверх интерфейса управления бюджетом" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/sim-2.jpg" alt="Слайд «Логика и цели системы мотивации на портале знаний»: блок-схема начисления рейтинга" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/sim-3.jpg" alt="Симуляция страницы «Мой профиль»: подсказка нажать кнопку «Назад» поверх таблицы назначенных курсов" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/sim-4.png" alt="Симуляция «Сбербанк ОнЛ@йн»: упражнение на перевод средств между своими счетами и картами" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/sim-5.jpg" alt="Симуляция складской системы «М.видео»: выбор шаблона инвентаризации с подсказкой персонажа" loading="lazy"></button>
+      </div>
+    </section>
+
+    <section class="shot-group reveal">
+      <p class="group-num">Группа 03</p>
+      <h2 class="group-title">Шаблоны курсов для сервиса Labmedia elearning templates</h2>
+      <p class="group-desc">Спроектировала и собрала подробные шаблоны для электронных курсов. Контролировала разработку визуального ряда. Участвовала в разработке самого сервиса.</p>
+
+      <p class="tool-label">Средство сборки — <strong>iSpring Suite</strong></p>
+      <div class="shot-grid">
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-1.jpg" alt="Шаблон приветственного слайда: персонаж-наставник Сергей встречает пользователя на ресепшене" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-2.png" alt="Шаблон слайда с изометрической картой офиса и репликой персонажа-наставника" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-3.jpg" alt="Шаблон слайда с вкладками для фармацевтического курса: текст и изображение продукта" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-4.jpg" alt="Шаблон слайда «Fire classes»: четыре класса пожаров в виде пазла с пояснениями" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-5.png" alt="Шаблон интерактивного задания: найти в офисе элементы треугольника огня и нажать на них" loading="lazy"></button>
+        <button class="shot" type="button"><img src="img/courses-authoring/tpl-6.png" alt="Шаблон слайда «Отпуск»: рабочий стол с активными областями, раскрывающими информацию" loading="lazy"></button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="back-row reveal">
+    <a href="portfolio-courses.html" class="back-link">Ко всем курсам</a>
+  </div>
+
+  <footer>
+    <span class="footer-name">Малинина Наталья — Технический писатель · UX-редактор · Системный аналитик</span>
+    <span class="footer-copy">© 2025</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── LIGHTBOX ──
+    let lightbox = null;
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.remove();
+      lightbox = null;
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(src, alt) {
+      closeLightbox();
+      lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Закрыть">&times;</button>';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      lightbox.appendChild(img);
+      lightbox.addEventListener('click', closeLightbox);
+      document.body.appendChild(lightbox);
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.querySelectorAll('.shot').forEach(btn => {
+      const img = btn.querySelector('img');
+      btn.setAttribute('aria-label', 'Открыть скриншот: ' + img.alt);
+      btn.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
